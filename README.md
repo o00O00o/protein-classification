@@ -1,2 +1,15 @@
-This is the repository where the deep learning protein classification project is kept.  
-The project implements CNN via Keras to determine wether the protein is DNA-binding or RNA-binding based on the amino acid sequence.
+## 项目目的：
+运用卷积神经网络，通过蛋白质的氨基酸序列来预测蛋白质结合的核苷酸种类(DNA or RNA，二分类问题)。  
+## 数据处理：
+原本样本共有数据36065条。其中与DNA结合：21379，与RNA结合：14686。  
+因数据长度差异大，神经网络需接受固定长度的信号，我先筛选出长度为100-1000的数据共26268条。长度短于500的数据重复填充，长度长于500的数据随机截取，将氨基酸序列长度固定为500。  
+得到固定长度的氨基酸序列后，将其进行one-hot编码。氨基酸序列标记有25种：'A', 'C', 'E', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T','U', 'V', 'Y', '3', '2', 'K', '1', '5', '7', '0', 'D'(有些疑惑为什么不是20种)。编码后形状为(500,25)的矩阵代表一条氨基酸序列，矩阵再经过z-score标准化后输入网络。  
+## 网络模型：  
+采用简单的Lenet结构  
+## 实验设置：
+26268条数据按照4:1的比例随机分成训练集和测试集，batch size设置为16，优化器选择adam，loss选择categorical crossentropy，采用keras框架，训练100个epoch。  
+## 实验结果：
+训练后可以达到95%左右的精确度  
+## 进一步提高网络性能的想法：
+1. 网络结构比较简单，可以加上时间通道注意力模块或采用RNN进一步优化提取的特征。
+2. 对于长度不同的氨基酸序列，需要固定长度才能输入进CNN中，而筛选截取的方法太过粗糙，会造成数据的浪费。或许可以采用其他编码方法来解决这一问题。
