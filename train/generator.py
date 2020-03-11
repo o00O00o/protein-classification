@@ -40,4 +40,3 @@ def generate(dataSet, labSet, batchSize):
             batchFlag = 0
             data_list = np.zeros((batchSize, 500, 25, 1), dtype=np.float32)
             lab_list = np.zeros((batchSize))
-

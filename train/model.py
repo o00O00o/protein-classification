@@ -1,4 +1,4 @@
-from keras.layers import MaxPooling2D, Conv2D, Dense, Flatten, Input, Activation, Flatten, BatchNormalization
+from keras.layers import MaxPooling2D, Conv2D, Dense, Input, Activation, Flatten, BatchNormalization
 from keras.models import Model
 
 
