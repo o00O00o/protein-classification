@@ -1,4 +1,4 @@
 #iLearn处理后的数据太大，不上传
 data/AA-index/S/encoded.txt
 #不上传__pycache__
-#*/__pycache__/
+*/__pycache__/
